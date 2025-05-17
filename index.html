@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #content {
+            padding: 20px;
+        }
+        #quote {
+            margin-top: 20px;
+            font-style: italic;
+        }
+        #imageContainer {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+    </header>
+    <div id="content">
+        <h2>Welcome to My Simple Website!</h2>
+        <p>Click the buttons below to change the background color, get a random quote, or display a random image.</p>
+        <button id="colorBtn">Change Color</button>
+        <button id="quoteBtn">Get Quote</button>
+        <button id="imageBtn">Show Random Image</button>
+        <p id="quote"></p>
+        <div id="imageContainer"></div>
+    </div>
+
+    <script>
+         var quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+            "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "It always seems impossible until it's done. - Nelson Mandela",
+            "Believe you can and you're halfway there. - Theodore Roosevelt",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt"
+        ];
+
+        // Images array
+        var images = [
+            "https://live.staticflickr.com/512/19156678806_43aa786da6_h.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH35mtIOMJBtJqiQ-yg44GtoeWXfBrfkTkDFVcaXMW9w&s",
+            "https://img.freepik.com/premium-photo/majestic-magical-fantasy-landscape-with-mountains-river-waterfall-sun-rays-3d-illustration_598586-1969.jpg",
+            "https://img.freepik.com/free-photo/lake-mountains_1204-502.jpg",
+            "https://i.pinimg.com/736x/66/b7/f6/66b7f6e5ad85cdfeab3459f2b5480407.jpg",
+            "https://p0.pxfuel.com/preview/567/268/866/plants-nature-royalty-free-thumbnail.jpg",
+            "https://img.lovepik.com/photo/48013/0627.jpg_wh860.jpg"
+        ];
+
+        // Function to change background color
+        document.getElementById('colorBtn').addEventListener('click', function() {
+            changeColor();
+        });
+
+        function changeColor() {
+            var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // Function to display random quote
+        document.getElementById('quoteBtn').addEventListener('click', function() {
+            displayRandomQuote();
+        });
+
+        function displayRandomQuote() {
+            var randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote').textContent = quotes[randomIndex];
+        }
+
+        // Function to display random image
+        document.getElementById('imageBtn').addEventListener('click', function() {
+            displayRandomImage();
+        });
+
+        function displayRandomImage() {
+            var randomIndex = Math.floor(Math.random() * images.length);
+            var imageUrl = images[randomIndex];
+            var imageElement = document.createElement('img');
+            imageElement.src = imageUrl;
+            document.getElementById('imageContainer').innerHTML = '';
+            document.getElementById('imageContainer').appendChild(imageElement);
+        }
+    </script>
+</body>
+</html>
